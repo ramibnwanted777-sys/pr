@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Evolution | Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5; /* Indigo */
+            --primary-light: #eef2ff;
+            --secondary: #0f172a; /* Slate */
+            --text-main: #1e293b;
+            --text-muted: #475569;
+            --sidebar-bg: #f8fafc;
+            --border: #e2e8f0;
+            --accent: #0ea5e9; /* Sky Blue */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: var(--text-main);
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        /* Top Banner */
+        .top-nav {
+            grid-column: 1 / -1;
+            background: var(--secondary);
+            color: white;
+            padding: 0 2rem;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            border-bottom: 4px solid var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo { font-weight: 700; font-size: 1.1rem; letter-spacing: -0.5px; }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            padding: 2rem 1.5rem;
+            height: calc(100vh - 60px);
+            position: sticky;
+            top: 60px;
+            overflow-y: auto;
+        }
+
+        .sidebar h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 0.6rem 1rem;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            border-radius: 6px;
+            margin-bottom: 0.4rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .nav-link:hover { background: var(--primary-light); color: var(--primary); }
+        .nav-link.active { background: var(--primary); color: white; font-weight: 600; }
+
+        /* Main Content */
+        main {
+            padding: 3rem 5rem;
+            max-width: 1000px;
+        }
+
+        .breadcrumb {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        h2::before {
+            content: "";
+            width: 4px;
+            height: 24px;
+            background: var(--accent);
+            margin-right: 12px;
+            border-radius: 2px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+            text-align: justify;
+        }
+
+        .note {
+            background: var(--primary-light);
+            border-left: 5px solid var(--primary);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+
+        /* Styling the scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+
+        @media (max-width: 768px) {
+            body { grid-template-columns: 1fr; }
+            .sidebar { display: none; }
+            main { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="logo">TECH_EVOLUTION <span style="color: var(--accent);">DOCS</span></div>
+    </nav>
+
+    <aside class="sidebar">
+        <h4>Historical Eras</h4>
+        <nav id="menu"></nav>
+    </aside>
+
+    <main id="content-area">
+        </main>
+
+    <script>
+        const techHistory = [
+            {
+                id: "early-tech",
+                title: "The Dawn of Innovation",
+                breadcrumb: "Foundation / Pre-Industrial",
+                intro: "The journey of human progress began millions of years ago, rooted in the basic need for survival and adaptation.",
+                subTitle: "Mastering the Elements",
+                body: "Thousands of years ago, early humans began utilizing stones and sticks, transforming them into primitive tools for hunting and construction. The monumental discovery of fire empowered humanity to cook food, provide warmth, and secure protection against predators. This era was further revolutionized by the invention of the wheel, which fundamentally altered transportation, and the advent of agriculture, which stabilized food supplies and led to organized societal structures.",
+                extraTitle: "Knowledge and Expansion",
+                extraBody: "As communities grew, the domestication of animals provided vital resources like dairy and meat. Trade became sophisticated with the creation of the first measurement scales. Knowledge was no longer lost to time, thanks to the development of papyrus and early writing systems. Military defense advanced with bows and arrows, while water mills harnessed natural energy to grind grains, eventually leading to the formation of the first organized cities."
+            },
+            {
+                id: "industrial",
+                title: "The Industrial Revolution",
+                breadcrumb: "Mechanical / Industrial Age",
+                intro: "The transition from hand production to machines marked a turning point in history, redefining how the world works.",
+                subTitle: "The Power of Steam and Steel",
+                body: "The Industrial Revolution saw machines replacing manual labor in factories at an unprecedented scale. The steam engine became the heart of this movement, powering trains and ships that moved goods across continents with ease. The establishment of electric factories allowed for the mass production of clothing and tools, while the power grid finally reached homes, changing domestic life forever.",
+                extraTitle: "Communication Breakthroughs",
+                extraBody: "The telegraph made long-distance communication faster than traditional mail, followed by the telephone which changed human interaction. Electric bulbs replaced oil lamps, illuminating cities throughout the night. The rise of the automobile industry reshaped urban planning and personal mobility, creating the technological foundation of the modern world."
+            },
+            {
+                id: "computer-age",
+                title: "The Computer Era",
+                breadcrumb: "Digital / Modern Era",
+                intro: "A new kind of intelligence emerged as we moved from mechanical gears to electronic circuits.",
+                subTitle: "From Giant Rooms to Pocket Devices",
+                body: "Early computers were massive machines that filled entire rooms, yet they performed calculations faster than any human could dream. Over time, these machines became smaller, faster, and significantly more powerful. The Personal Computer (PC) eventually reached every household, becoming an essential tool for daily life. This era birthed the Internet—originally a small research network that transformed into a global web of information.",
+                extraTitle: "The Mobile Revolution",
+                extraBody: "Electronic mail (Email) revolutionized how we send messages, while search engines made the world's knowledge instantly accessible. Laptops allowed for a mobile workforce, and smartphones eventually merged the computer, phone, and camera into a single handheld device. Today, applications simplify everything from education and shopping to entertainment and remote work."
+            },
+            {
+                id: "future",
+                title: "The Future Frontier",
+                breadcrumb: "Vision / Next Gen",
+                intro: "The boundary between biological and digital life continues to blur as we look toward the horizon.",
+                subTitle: "AI and Robotics",
+                body: "In the coming years, robots will become common fixtures in homes, hospitals, and schools. Artificial Intelligence will simplify daily problem-solving and decision-making processes. Flying cars and advanced space technology will open new horizons for travel and exploration beyond our planet.",
+                extraTitle: "A Sustainable Tomorrow",
+                extraBody: "Smart devices will become more integrated into our biology, and wearable technology will monitor our health in real-time. Virtual reality will transform how we experience learning and entertainment. Most importantly, clean energy technologies will become widespread, ensuring that the innovations of the future also protect the environment for generations to come."
+            }
+        ];
+
+        let activeTab = 0;
+
+        function render() {
+            const menu = document.getElementById('menu');
+            const main = document.getElementById('content-area');
+            const current = techHistory[activeTab];
+
+            // Render Sidebar
+            menu.innerHTML = techHistory.map((item, idx) => `
+                <a class="nav-link ${idx === activeTab ? 'active' : ''}" onclick="changeTab(${idx})">
+                    ${item.title}
+                </a>
+            `).join('');
+
+            // Render Content
+            main.innerHTML = `
+                <div class="breadcrumb">${current.breadcrumb}</div>
+                <h1>${current.title}</h1>
+                <p class="intro-text" style="font-weight: 600; color: var(--primary);">${current.intro}</p>
+                
+                <h2>${current.subTitle}</h2>
+                <p>${current.body}</p>
+
+                <div class="note">
+                    <strong>Historical Insight:</strong> This period represents a critical junction in human evolution, where tools became an extension of the human mind.
+                </div>
+
+                <h2>${current.extraTitle}</h2>
+                <p>${current.extraBody}</p>
+            `;
+        }
+
+        function changeTab(idx) {
+            activeTab = idx;
+            render();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        render();
+    </script>
+</body>
+</html>
